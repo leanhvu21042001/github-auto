@@ -1,0 +1,14 @@
+{
+  "name": "auto-push-commit-to-github",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ./index.js"
+  },
+  "dependencies": {
+    "@octokit/rest": "^19.0.7",
+    "dotenv": "^16.0.3",
+    "node-cron": "^3.0.2"
+  }
+}
