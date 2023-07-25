@@ -1,6 +1,8 @@
 name: CI/CD
 
 on:
+  schedule:
+    - cron: "1-59 * * * *"
   push:
     branches:
       - main
@@ -16,7 +18,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: "18"
+          node-version: "18" # Adjust the Node.js version as needed
 
       - name: Install dependencies
         run: npm install
@@ -36,5 +38,5 @@ jobs:
         if: github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.token }}
           publish_dir: ./
