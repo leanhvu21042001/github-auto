@@ -11,7 +11,7 @@ const octokit = new Octokit({
 
 const owner = "leanhvu5501412";
 const repo = "leanhvu5501412";
-const path = "tasks.md";
+const path = "README.md";
 
 const getQuoteToday = async () => {
   const response = await axios.get("https://zenquotes.io/api/today");
@@ -21,7 +21,7 @@ const getQuoteToday = async () => {
 // "0 0 * * *" : chạy vào mỗi đêm.
 
 // chạy vào sau mỗi phút.
-cron.schedule("1-59 * * * *", async () => {
+cron.schedule("0 0 * * *", async () => {
   try {
     const quote = await getQuoteToday();
 
