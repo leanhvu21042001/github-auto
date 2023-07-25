@@ -18,7 +18,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: "18"  # Adjust the Node.js version as needed
+          node-version: "18" # Adjust the Node.js version as needed
 
       - name: Install dependencies
         run: npm install
@@ -30,8 +30,8 @@ jobs:
 
       - name: Commit and Push Changes
         run: |
-          git config --global user.name "Your GitHub Username"
-          git config --global user.email "your-email@example.com"
+          git config --global user.name "leanhvu5501412"
+          git config --global user.email "leanhvu550@gmail.com"
           git add .
           git commit -m "Update file content $(date -R)"
           git push
