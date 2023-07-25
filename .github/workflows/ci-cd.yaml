@@ -2,7 +2,7 @@ name: CI/CD
 
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "1-59 * * * *"
   push:
     branches:
       - main
@@ -26,10 +26,8 @@ jobs:
       - name: Run Node.js script
         env:
           token: ${{ secrets.token }}
-        run: node index.js
-
-      - name: Commit and Push Changes
         run: |
+          node index.js
           git config --global user.name "leanhvu5501412"
           git config --global user.email "leanhvu550@gmail.com"
           git add .
