@@ -21,7 +21,7 @@ const getQuoteToday = async () => {
 // "0 0 * * *" : chạy vào mỗi đêm.
 
 // chạy vào sau mỗi phút.
-cron.schedule("0 0 * * *", async () => {
+cron.schedule("1-59 * * * *", async () => {
   try {
     const quote = await getQuoteToday();
 
