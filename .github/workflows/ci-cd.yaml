@@ -24,7 +24,7 @@ jobs:
         run: npm install
 
       - name: Run the Node.js script
-        run: node index.js
+        run: node ./index.js
 
       - name: Commit changes and push back to repository
         run: |
