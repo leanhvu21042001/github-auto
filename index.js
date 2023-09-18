@@ -19,7 +19,7 @@ const getQuoteToday = async () => {
 };
 
 // Update every night
-cron.schedule("0 0 * * *", async () => {
+cron.schedule("* * * * *", async () => {
   try {
     const quote = await getQuoteToday();
 
