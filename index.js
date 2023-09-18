@@ -1,8 +1,10 @@
+const express = require("express");
 const { Octokit } = require("@octokit/rest");
 const cron = require("node-cron");
 const axios = require("axios");
 require("dotenv").config();
 
+const app = express();
 const token = process.env.token;
 
 const octokit = new Octokit({
@@ -19,7 +21,7 @@ const getQuoteToday = async () => {
 };
 
 // Update every night
-cron.schedule("* * * * *", async () => {
+cron.schedule("0 0 * * *", async () => {
   try {
     const quote = await getQuoteToday();
 
@@ -52,3 +54,8 @@ cron.schedule("* * * * *", async () => {
     process.exit(1);
   }
 });
+
+const port = progress.env.PORT || 5000;
+
+app.listen(port, () => {});
+
