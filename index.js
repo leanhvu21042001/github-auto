@@ -32,7 +32,7 @@ const getQuoteToday = async () => {
 };
 
 // Update every night
-cron.schedule("* * * * *", async () => {
+cron.schedule("0 0 * * *", async () => {
   try {
     const quote = await getQuoteToday();
 
@@ -84,4 +84,7 @@ cron.schedule("* * * * *", async () => {
 
 const port = process.env.PORT || 5000;
 
+app.get("/", (req, res) => {
+  return res.send("OK");
+});
 app.listen(port, () => {});
