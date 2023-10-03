@@ -31,6 +31,13 @@ const getQuoteToday = async () => {
   return response.data[0];
 };
 
+const calcTime = (offset) => {
+  const date = new Date();
+  const utc = date.getTime() + date.getTimezoneOffset() * 60000;
+  const newDate = new Date(utc + 3600000 * offset);
+  return newDate.toLocaleString();
+};
+
 // Update every night
 cron.schedule("* * * * *", async () => {
   try {
@@ -45,7 +52,7 @@ cron.schedule("* * * * *", async () => {
       path,
     });
 
-    const dateString = new Date().toLocaleString();
+    const dateString = calcTime("+7");
     const defaultContent = `# Hi there 👋\n\n\n## ${quote?.h}\n\n\n<img width="50%" src="https://zenquotes.io/api/image" alt="zenquotes-image-each-day" />\n\n\n ## 📫 How to reach me: https://www.facebook.com/nhatcungtom\n\n\n ## 🌱 **Languages and Tools:**\t<code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png"></code><code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/react/react.png"></code><code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/nodejs/nodejs.png"></code>\n\n\n![leanhvu21042001 Github Stats](https://github-readme-stats.vercel.app/api?username=leanhvu21042001&show_icons=true&theme=tokyonight)\n\n\n![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=leanhvu21042001&layout=compact&theme=tokyonight)`;
 
     // Modify the file content
