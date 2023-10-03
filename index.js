@@ -38,8 +38,8 @@ const calcTime = (offset) => {
   return newDate.toLocaleString();
 };
 
-// Update every night
-cron.schedule("* * * * *", async () => {
+// Schedule the task to run at 9 AM and 6 PM every day
+cron.schedule("0 9,18 * * *", async () => {
   try {
     const quote = await getQuoteToday();
 
@@ -56,8 +56,8 @@ cron.schedule("* * * * *", async () => {
     const defaultContent = `# Hi there 👋\n\n\n## ${quote?.h}\n\n\n<img width="50%" src="https://zenquotes.io/api/image" alt="zenquotes-image-each-day" />\n\n\n ## 📫 How to reach me: https://www.facebook.com/nhatcungtom\n\n\n ## 🌱 **Languages and Tools:**\t<code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png"></code><code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/react/react.png"></code><code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/nodejs/nodejs.png"></code>\n\n\n![leanhvu21042001 Github Stats](https://github-readme-stats.vercel.app/api?username=leanhvu21042001&show_icons=true&theme=tokyonight)\n\n\n![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=leanhvu21042001&layout=compact&theme=tokyonight)`;
 
     // Modify the file content
-    const message = `Update file content ${dateString}`;
-    const newContent = `${defaultContent}\n\n\nNew file content (${dateString})`;
+    const message = `You have new update at ${dateString}`;
+    const newContent = `${defaultContent}\n\n\nYou have new update (${dateString})`;
     const content = Buffer.from(newContent).toString("base64");
 
     // Update the file on GitHub
@@ -73,8 +73,8 @@ cron.schedule("* * * * *", async () => {
     const mailOptions = {
       from: email_auth_user,
       to: email_auth_user,
-      subject: "Sending Email using Node.js",
-      text: "That was easy!" + dateString,
+      subject: "You have update your README.md",
+      text: `Your repository: https://github.com/leanhvu5501412/leanhvu5501412/blob/main/README.md have update at ${dateString}`,
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
